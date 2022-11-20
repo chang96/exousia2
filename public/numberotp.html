@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="application/javascript" src="https://connect.withmono.com/connect.js"></script>
+
+
+    <!-- Compiled and minified JavaScript -->
+
+</head>
+<style>
+    ul{
+        text-align: right;
+    }
+    li{
+        display: inline;
+        margin-left: 30px;
+    }
+    a{
+        color: gray;
+    }
+    #G:hover{
+        background-color: rgba(3, 155, 229, 0.46);
+    }
+    #y:hover{
+        color: rgba(3, 155, 229, 0.46);
+    }
+    #R:hover{
+        background-color: hsl(199, 98%, 22%);
+    }
+
+</style>
+<link rel="stylesheet" href="splide-4.1.3/dist/css/splide.min.css">
+<script src="splide-4.1.3/dist/js/splide.min.js"></script>
+<body>
+<div>
+    <div style="margin-bottom: 10px" class="row">
+        <div class="col l4">
+
+        </div>
+        <div class="col l4">
+            <p style="font-family: arial; font-size: 45px; font-weight: 900;color: #039be5; margin-bottom: 0; margin-top: 10px">
+                <img style="width: 90px;" src="WhatsApp%20Image%202022-10-17%20at%2012.40.35.jpeg">
+                EXOUSIA
+            </p>
+        </div>
+
+    </div>
+</div>
+<div style="border: 1px solid rgba(127, 127, 127, 0.44); text-shadow: 2px 2px black" ></div>
+
+
+<div style="margin-bottom: 10px" class="row">
+    <div class="col l4">
+
+    </div>
+    <div class="col l4">
+        <img style="width: 80%;margin-left: 10%; padding-top: 30px" src="1.jpg">
+        <p style="width: 80%;margin-left: 10%; text-align: center">You are about purchase product xxx from yyy by paying in installment. Help with the following details</p>
+        <div style="border: 1px solid #000000; padding: 30px" class="container">
+            <div class="row">
+                <h6 style="color:#028bcd;font-weight: 700 ">Enter OTP :</h6>
+                <div class="input-field col s12">
+                    <input id="Number" type="Number" class="validate">
+                    <label for="Number">OTP</label>
+                </div>
+            </div>
+            <button style="display: none;" id="launch-btn">Collected Statement</button>
+
+            <a onclick="validateOtp()" style="text-align: center; background-color:#028bcd " class="waves-effect waves-light btn">Submit </a>
+        </div>
+
+    </div>
+
+</div>
+
+<div style="background-color: #028bcd">
+    <p class="footer" style="border-top: 1px solid rgba(127, 127, 127, 0.44); text-align: center; font-weight: 700; color: white; padding: 30px">Copyright Exousia</p>
+</div>
+
+
+</body>
+</html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script type="application/javascript">
+    const copyToClipboard = text => {
+      const elm = document.createElement('textarea');
+      elm.value = text;
+      document.body.appendChild(elm);
+      elm.select();
+      document.execCommand('copy');
+      document.body.removeChild(elm);
+    };
+    var connect;
+    var config = {
+      key: "test_pk_FgFWCXlP7vrkYXk6xx7t", //"live_pk_Qjj1KVgsvEgvHf6ooJ59", //"test_pk_FgFWCXlP7vrkYXk6xx7t", // 
+      onSuccess: async function (response) {
+        copyToClipboard(response.code);
+        
+        let resx =JSON.stringify(response);
+        await axios.get(`https://shielded-shelf-29245.herokuapp.com/user/analyzeuser?userCode=${encodeURIComponent(response.code)}`).then(async res=> { //https://shielded-shelf-29245.herokuapp.com/ localhost:3006
+            console.log(res)
+            // let {gamblingRate} = res.data.data.data.behaviouralAnalysis
+            // await db.collection("verifiedUser").add({
+            //     ...res.data.data.data,
+            //     id: window.localStorage.getItem("productID"),
+            //     name: window.localStorage.getItem("fullName"),
+            //     phoneNumber: window.localStorage.getItem("phoneNumber")
+            // })
+            if(res){
+                alert("Your credit score is ok.You can now proceed to pay first installment!")
+                window.location.href = "/makepayment.html"
+
+            } else {
+                alert("Your credit score is low and you are not eligible to buy this product. ")
+            }
+        })
+        //{"code":"code_kYHmKJKKNQ8GWRfEJDSC"}
+        /**
+         response : { "code": "code_xyz" }
+         you can send this code back to your server to get this
+         authenticated account and start making requests.
+         */
+      },
+      onClose: function () {
+        console.log('user closed the widget.')
+      }
+    };
+    connect = new Connect(config);
+    connect.setup();
+    var launch = document.getElementById('launch-btn');
+    launch.onclick = function (e) {
+      connect.open();
+    };
+  </script>
+<script>
+    document.addEventListener( 'DOMContentLoaded', function() {
+        var splide = new Splide( '.splide' );
+        splide.mount();
+    } );
+</script>
+<script>
+      async function validateOtp(){
+    try{
+        const head = "https://gbale.ng"
+    let owner = "rorewole@gmail.com"
+    let pinId = window.localStorage.getItem("pinid")
+    const otp = document.getElementById("Number").value
+    console.log(otp)
+    const res =  await axios({
+    method: "get",
+    url: `${head}/xvalidateotp?otp=${otp}&owner=${owner.toLowerCase()}&pinid=${pinId}`,
+    }).then(function (response) {
+      if(response.data === 'success'){
+        let answer = confirm("Phone number verified through OTP. Proceed to mono to authorize access to your bank statement.")
+        if(answer){
+            document.getElementById("launch-btn").click();
+        }
+          
+        
+      }
+
+      return response 
+    }).catch(e =>{
+        console.log(e)
+    })
+    return res.data
+    }catch(e){
+      return e
+    }
+  }
+</script>

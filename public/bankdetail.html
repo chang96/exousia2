@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+
+</head>
+<style>
+    ul{
+        text-align: right;
+    }
+    li{
+        display: inline;
+        margin-left: 30px;
+    }
+    a{
+        color: gray;
+    }
+    #G:hover{
+        background-color: rgba(3, 155, 229, 0.46);
+    }
+    #y:hover{
+        color: rgba(3, 155, 229, 0.46);
+    }
+    #R:hover{
+        background-color: hsl(199, 98%, 22%);
+    }
+
+</style>
+<link rel="stylesheet" href="splide-4.1.3/dist/css/splide.min.css">
+<script src="splide-4.1.3/dist/js/splide.min.js"></script>
+<script src="materialize.min.js"></script>
+<body>
+<div>
+    <div style="margin-bottom: 10px" class="row">
+        <div class="col l4">
+
+        </div>
+        <div class="col l4">
+            <p style="font-family: arial; font-size: 45px; font-weight: 900;color: #039be5; margin-bottom: 0; margin-top: 10px">
+                <img style="width: 90px;" src="WhatsApp%20Image%202022-10-17%20at%2012.40.35.jpeg">
+                EXOUSIA
+            </p>
+        </div>
+
+    </div>
+</div>
+<div style="border: 1px solid rgba(127, 127, 127, 0.44); text-shadow: 2px 2px black" ></div>
+
+
+<div style="margin-bottom: 10px" class="row">
+    <div class="col l4">
+
+    </div>
+    <div class="col l4">
+        <img style="width: 80%;margin-left: 10%; padding-top: 30px" src="1.jpg">
+        <p style="width: 80%;margin-left: 10%; text-align: center">You are about purchase product xxx from yyy by paying in installment. Help with the following details</p>
+        <div style="border: 1px solid #000000; padding: 30px" class="container">
+            <div class="row">
+                <h6 style="color:#028bcd;font-weight: 700 ">Enter Bank Name :</h6>
+                <div class="input-field col s12">
+                    <input id="text" type="text" class="validate">
+                    <label for="text">Account Name </label>
+                </div>
+            </div>
+            <div class="row">
+            <h6 style="color:#028bcd;font-weight: 700 ">Enter Bank Name :</h6>
+            <div class="input-field col s12">
+                <input id="Number" type="Number" class="validate">
+                <label for="Number">Account Name </label>
+            </div>
+        </div>
+            <div class="row">
+                <h6 style="color:#028bcd;font-weight: 700 ">Select Bank Name :</h6>
+                <div class="input-field col s12">
+                        <select>
+                            <option selected>Choose</option>
+                            <option value="access">Access Bank</option>
+                            <option value="citibank">Citibank</option>
+                            <option value="diamond">Diamond Bank</option>
+                            <option value="ecobank">Ecobank</option>
+                            <option value="fidelity">Fidelity Bank</option>
+                            <option value="fcmb">First City Monument Bank (FCMB)</option>
+                            <option value="fsdh">FSDH Merchant Bank</option>
+                            <option value="gtb">Guarantee Trust Bank (GTB)</option>
+                            <option value="heritage">Heritage Bank</option>
+                            <option value="Keystone">Keystone Bank</option>
+                            <option value="rand">Rand Merchant Bank</option>
+                            <option value="skye">Skye Bank</option>
+                            <option value="stanbic">Stanbic IBTC Bank</option>
+                            <option value="standard">Standard Chartered Bank</option>
+                            <option value="sterling">Sterling Bank</option>
+                            <option value="suntrust">Suntrust Bank</option>
+                            <option value="union">Union Bank</option>
+                            <option value="uba">United Bank for Africa (UBA)</option>
+                            <option value="unity">Unity Bank</option>
+                            <option value="wema">Wema Bank</option>
+                            <option value="zenith">Zenith Bank</option>
+                        </select>
+                        <label>Materialize Select</label>
+                </div>
+
+            </div>
+
+            <a style="text-align: center; background-color:#028bcd " class="waves-effect waves-light btn">Phone</a>
+        </div>
+
+    </div>
+
+</div>
+
+<div style="background-color: #028bcd">
+    <p class="footer" style="border-top: 1px solid rgba(127, 127, 127, 0.44); text-align: center; font-weight: 700; color: white; padding: 30px">Copyright Exousia</p>
+</div>
+
+
+</body>
+</html>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.4/js/materialize.min.js"></script>
+
+<script>
+    document.addEventListener( 'DOMContentLoaded', function() {
+        var splide = new Splide( '.splide' );
+        splide.mount();
+    } );
+
+    $(document).ready(function() {
+        $('select').formSelect();
+        // Old way
+        // $('select').material_select();
+    });
+
+</script>
